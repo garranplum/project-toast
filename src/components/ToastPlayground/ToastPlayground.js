@@ -1,20 +1,20 @@
 import React from 'react';
 
 import Button from '../Button';
-import Toast from '../Toast';
 import ToastShelf from '../ToastShelf';
-
+import { ToastContext } from '../ToastContext';
 import styles from './ToastPlayground.module.css';
 
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 
 function ToastPlayground() {
 
+
+  const { toastList, setToastList } = React.useContext(ToastContext);
+
   // State Hooks
   const [variant, setVariant] = React.useState('notice');
   const [message, setMessage] = React.useState('');
-  const [isHidden, setIsHidden] = React.useState(true);
-  const [toastList, setToastList] = React.useState([]);
 
   return (
     <div className={styles.wrapper}>
@@ -23,7 +23,7 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      <ToastShelf toastList={toastList} />
+      <ToastShelf />
 
       <div className={styles.controlsWrapper}>
 
