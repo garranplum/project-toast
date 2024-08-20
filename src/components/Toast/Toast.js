@@ -18,12 +18,9 @@ const ICONS_BY_VARIANT = {
   error: AlertOctagon,
 };
 
-function Toast({ isHidden, setIsHidden, variant, children }) {
+function Toast({ variant, children, remover }) {
 
   const Icon = ICONS_BY_VARIANT[variant];
-
-  // Hidden? Early return.
-  if (isHidden) { return }
 
   return (
     <div className={`${styles.toast} ${styles[variant]}`}>
@@ -33,7 +30,7 @@ function Toast({ isHidden, setIsHidden, variant, children }) {
       <p className={styles.content}>
         {children}
       </p>
-      <button onClick={() => setIsHidden(true)} className={styles.closeButton}>
+      <button onClick={() => remover()} className={styles.closeButton}>
         <X size={24} />
         <VisuallyHidden>Dismiss message</VisuallyHidden>
       </button>
