@@ -13,7 +13,7 @@ function ToastPlayground() {
   const { toastList, setToastList } = React.useContext(ToastContext);
 
   // State Hooks
-  const [variant, setVariant] = React.useState('notice');
+  const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0]);
   const [message, setMessage] = React.useState('');
 
   return (
@@ -56,11 +56,12 @@ function ToastPlayground() {
             >
 
               {VARIANT_OPTIONS.map(variantOption => {
+                const key = `variant-${variantOption}`
                 return (
-                  <label key={`label-${variantOption}`} htmlFor={`variant-${variantOption}`}>
+                  <label key={key} htmlFor={key}>
                     <input
-                      key={variantOption}
-                      id={`variant-${variantOption}`}
+                      key={key}
+                      id={key}
                       type="radio"
                       name="variant"
                       value={variantOption}
